@@ -1,20 +1,17 @@
-{% extends "app_pets/base.html" %}
+{% extends "global/base.html" %}
+{%load static%}
 {% block title %}Home - Find My Pets{% endblock title %}
 
 {% block content %}
-<!-- Include the header partial -->
-{% include 'app_pets/partials/header.html' %}
-
-<html lang="pt-br" data-bs-theme="dark">
-
 <div class="container">
     <h1>Welcome to Find My Pets</h1>
     <p>Your one-stop solution for finding lost pets.</p>
+
+    {% if user.is_authenticated %}
+        <p>Logged in as: {{ user.username }}</p>
+    {% else %}
+        <p>You are not logged in.</p>
+    {% endif %}
 </div>
 
 {% endblock content %}
-
-{% block footer %}
-    <!-- Include the footer partial -->
-    {% include 'app_pets/partials/footer.html' %}
-{% endblock footer %}
